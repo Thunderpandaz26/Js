@@ -1,13 +1,16 @@
 <script>
 //area=squareroot of p(p-a)(p-b)(p-c)
 //p=(a+b+c)/2
-const a=17
-const b=48
-const c=56
+let a = prompt("Please enter the first length")
+let b = prompt("Please enter the second length")
+let c = prompt("Please enter the third length")
+a = parseFloat(a)
+b = parseFloat(b)
+c = parseFloat(c)
 const p=(a+b+c)/2
-console.log (p-a)
-console.log (p-b)
-console.log (p-c)
+ console.log(a)
+ console.log(b)
+ console.log(c)
 const area=Math.sqrt(p*((p-a)*(p-b)*(p-c)))
-console.log (area)
+console.log(area)
 </script>
