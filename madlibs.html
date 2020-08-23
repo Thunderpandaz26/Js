@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Madlibs!
+
+    const companies = ["Uber", "Lyft", "Google", "Apple", "SpaceX", "Tinder"]
+    const animals = ["Aardvark", "Blue Footed Booby", "Flying Dragon", "Giraffe Weevil", "Hammerhead Slug", "Komodo Dragon", "Naked Mole Rat", "Okapi", "Red Panda"]
+    const vowels = ["A", "E", "I", "O", "U"]
+
+    for (let i = 0; i < 5; i++) {
+      const companyName = companies[Math.floor(Math.random() * companies.length)]
+      const firstLetter = companyName.charAt(0)
+      console.log("My company is a" + ((vowels.indexOf(firstLetter) > -1) ? "n " : " ") + companyName + " for " + animals[Math.floor(Math.random() * animals.length)] + "s!")
+    }
+
+  </script>
+</body>
+
+</html>
