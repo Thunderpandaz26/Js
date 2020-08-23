@@ -1,5 +1,6 @@
 window.onload = (() => {
   const buttons = document.getElementsByTagName('button')
+  console.log(buttons)
   const output = document.getElementsByTagName('input')[0]
   let operation = null
   let expression = firstNumber = secondNumber = 0
@@ -8,6 +9,18 @@ window.onload = (() => {
 
   const clickHandler = ((event) => {
     let value = event.target.value
+    if (value === "all-clear") {
+      output.value = 0
+    } else { 
+      if (output.value === "0") {
+        output.value = value
+      }
+      else if (output.value.length < 5) {
+        output.value += value
+      }
+     
+    }
+      console.log(value)
 
     /** Write your calculator logic here.
         Use conditionals and math to modify the output variable.
