@@ -1,3 +1,6 @@
+// Exponents / Roots
+// history
+// Pi (3.1415....)
 window.onload = (() => {
   const buttons = document.getElementsByTagName('button')
   console.log(buttons)
@@ -9,19 +12,41 @@ window.onload = (() => {
 
   const clickHandler = ((event) => {
     let value = event.target.value
-    if (value === "all-clear") {
-      output.value = 0
-    } else { 
-      if (output.value === "0") {
-        output.value = value
-      }
-      else if (output.value.length < 5) {
-        output.value += value
-      }
-     
+    switch (value) {
+      case 'all-clear':
+        firstNumber = secondNumber = expression = 0
+        output.value = 0
+        break
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        operation = value
+        console.log(operation)
+        if (firstNumber !== 0) {
+          secondNumber = parseFloat(expression)
+          let result = operators[operation](firstNumber, secondNumber)
+          output.value = expression = result
+        } else {
+          firstNumber = parseFloat(expression)
+        }
+        expression = 0
+        break
+      case '=':
+        secondNumber = parseFloat(expression)
+        let result = operators[operation](firstNumber, secondNumber)
+        output.value = expression = result
+        firstNumber = secondNumber = 0
+        break
+      default:
+        expression += value
+        expression = parseFloat(expression)
+        output.value = expression
+        break
     }
-      console.log(value)
+  })
 
+  
     /** Write your calculator logic here.
         Use conditionals and math to modify the output variable.
 
@@ -36,7 +61,7 @@ window.onload = (() => {
           Assignment
     */
 
-  })
+  
 
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = clickHandler

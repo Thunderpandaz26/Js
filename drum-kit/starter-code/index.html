@@ -58,7 +58,37 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+window.addEventListener('keydown', (e) => {
+  switch (e.keyCode){
+    case 65:
+      document.querySelector('audio[data-key="65"]').play()
+      break
+    case 83:
+      document.querySelector('audio[data-key="83"]').play()
+      break
+    case 68:
+      document.querySelector('audio[data-key="68"]').play()
+      break
+    case 70:
+      document.querySelector('audio[data-key="70"]').play()
+      break
+    case 71:
+      document.querySelector('audio[data-key="71"]').play()
+      break
+    case 72:
+      document.querySelector('audio[data-key="72"]').play()
+      break
+    case 74:
+      document.querySelector('audio[data-key="74"]').play()
+      break
+    case 75:
+      document.querySelector('audio[data-key="75"]').play()
+      break
+      case 76:
+      document.querySelector('audio[data-key="76"]').play()
+      break
+  }
+})
 </script>
 
 
