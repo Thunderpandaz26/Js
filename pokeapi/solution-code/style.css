@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #000 url('images/pokemon-2048x1152.jpg');
+  background: #000 url(images/shinx.png);
   font-family: sans-serif;
 }
 
@@ -18,7 +18,7 @@ h1, h2, h3 {
 }
 
 h1, h2 {
-  color: #fff;
+  color: #CF6679;
 }
 
 h3 {

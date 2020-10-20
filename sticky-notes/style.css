@@ -10,12 +10,12 @@ body {
   flex-wrap: wrap;
 }
 .box {
-  height: 200px;
+  height:auto;
   width: 200px;
   margin: 2px;
   text-align: center;
   font-size: 1.5em;
-  line-height: 185px;
+  line-height: 30px;
   font-weight: bold;
 }
 

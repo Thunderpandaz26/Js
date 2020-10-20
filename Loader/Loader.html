@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <style>
+        body {
+            background-image: url(Checkered.jpg);
+        }
+
+        div#loader {
+            position: absolute;
+            left: 47.5%;
+            top: 62%;
+            color: rgb(0, 87, 116);
+            font-size: xx-large;
+            font-family: "Pacifico";
+            background-color: rgb(255, 88, 116);
+        }
+
+        button#ShinyToggle {
+            position: absolute;
+            left: 57%;
+            top: 46.5%;
+        }
+
+        button#next {
+            position: absolute;
+            left: 57%;
+            top: 50.5%;
+        }
+
+        img#sprite {
+            position: absolute;
+            left: 48.45%;
+            top: 47.5%;
+        }
+
+        div#spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid lime;
+            border-radius: 50%;
+            border-top: 16px solid red;
+            border-bottom: 16px solid red;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            visibility: visible;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(0.75);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(0.75);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="spinner"> </div>
+    <div id="loader"></div>
+    <img id="sprite" />
+    <button id="next">next</button>
+    <button id="ShinyToggle">ShinyToggle</button>
+    <script>
+        const loader = document.querySelector("#loader")
+        let shiny = true
+        let default_sprite = ""
+        let shiny_sprite = ""
+        loader.innerHTML = "loading"
+        let counter = 0
+        const myinterval = setInterval(() => {
+            loader.innerHTML += "."
+            counter++
+            if (counter % 3 === 0) {
+                counter = 0
+                clearInterval(myinterval)
+                loader.innerHTML = ""
+                fetchThings()
+
+            }
+        }, 500)
+
+        function fetchThings() {
+            fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    console.log(data)
+                    fetch(data.results[Math.floor(Math.random() * data.results.length)].url)
+                        .then((response) => {
+                            return response.json()
+                        })
+                        .then((data) => {
+                            document.querySelector("#loader").style.backgroundColor = "inherit"
+                            document.querySelector("#loader").innerHTML = ""
+                            default_sprite = data.sprites.front_default
+                            shiny_sprite = data.sprites.front_shiny
+                            document.querySelector("#sprite").src = default_sprite
+                            clearInterval(myinterval)
+                        })
+                })
+        }
+        window.addEventListener("keydown", (event) => { if (event.keyCode===38) {fetchThings()} })
+        function ChangeShiny() {
+                shiny = !shiny
+                if (shiny) {
+                    document.querySelector("#sprite").src = shiny_sprite
+                }
+                else {
+                    document.querySelector("#sprite").src = default_sprite
+                }
+            }
+            document.querySelector("#ShinyToggle").addEventListener("click", () => { ChangeShiny()
+            })
+        
+
+        //Make evolution
+    </script>
+</body>
+
+</html>
+

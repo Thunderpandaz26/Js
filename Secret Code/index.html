@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    <script>
+        let secretcode = "lordgwen"
+        const Keyspressed = []
+        window.addEventListener("keyup", (event) => {
+            Keyspressed.push(event.key)
+            console.log(Keyspressed)
+            if (event.key === secretcode.slice(0, 1)) {
+                secretcode = secretcode.slice(1)
+            }
+            console.log(secretcode)
+            if (secretcode.length === 0){
+                cornify_add();
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>
