@@ -8,6 +8,25 @@
 </head>
 
 <body>
+    <style>
+        .spinny {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(0.75);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(0.75);
+            }
+        }
+    </style>
     <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
     <script>
         let secretcode = "lordgwen"
@@ -19,9 +38,14 @@
                 secretcode = secretcode.slice(1)
             }
             console.log(secretcode)
-            if (secretcode.length === 0){
+            if (secretcode.length === 0) {
                 cornify_add();
             }
+            document.querySelectorAll("div").forEach(div => {div.addEventListener("mouseover", (event) => {
+                event.target.classList.add("spinny")
+                console.log("spinny")
+            })})
+            
         })
 
 
